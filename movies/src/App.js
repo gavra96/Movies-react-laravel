@@ -1,184 +1,411 @@
 import React from 'react';
 import './App.css';
 
-import Nav from './Components/Nav/Nav';
 
 function App() {
   return (
-    
-    <div className="App">
-      <div id="wrapper">
-
-
-      
-      <Nav></Nav>
-
-      <section id="banner" className="major">
-        <div className="inner">
-          <header className="major">
-            <h1>Hi, my name is Forty</h1>
-          </header>
-          <div className="content">
-            <p>A responsive site template designed by HTML5 UP<br />
-            and released under the Creative Commons.</p>
-            <ul className="actions">
-              <li><a href="#one" className="button next scrolly">Get Started</a></li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-
-      <div id="main">
-
-        
-          <section id="one" className="tiles">
-            <article>
-              <span className="image">
-                <img src="images/pic01.jpg" alt="" />
-              </span>
-              <header className="major">
-                <h3><a href="landing.html" className="link">Aliquam</a></h3>
-                <p>Ipsum dolor sit amet</p>
-              </header>
-            </article>
-            <article>
-              <span className="image">
-                <img src="images/pic02.jpg" alt="" />
-              </span>
-              <header className="major">
-                <h3><a href="landing.html" className="link">Tempus</a></h3>
-                <p>feugiat amet tempus</p>
-              </header>
-            </article>
-            <article>
-              <span className="image">
-                <img src="images/pic03.jpg" alt="" />
-              </span>
-              <header className="major">
-                <h3><a href="landing.html" className="link">Magna</a></h3>
-                <p>Lorem etiam nullam</p>
-              </header>
-            </article>
-            <article>
-              <span className="image">
-                <img src="images/pic04.jpg" alt="" />
-              </span>
-              <header className="major">
-                <h3><a href="landing.html" className="link">Ipsum</a></h3>
-                <p>Nisl sed aliquam</p>
-              </header>
-            </article>
-            <article>
-              <span className="image">
-                <img src="images/pic05.jpg" alt="" />
-              </span>
-              <header className="major">
-                <h3><a href="landing.html" className="link">Consequat</a></h3>
-                <p>Ipsum dolor sit amet</p>
-              </header>
-            </article>
-            <article>
-              <span className="image">
-                <img src="images/pic06.jpg" alt="" />
-              </span>
-              <header className="major">
-                <h3><a href="landing.html" className="link">Etiam</a></h3>
-                <p>Feugiat amet tempus</p>
-              </header>
-            </article>
-          </section>
-
-        
-          <section id="two">
-            <div className="inner">
-              <header className="major">
-                <h2>Massa libero</h2>
-              </header>
-              <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet pharetra et feugiat tempus.</p>
-              <ul className="actions">
-                <li><a href="landing.html" className="button next">Get Started</a></li>
-              </ul>
+    <div className="wrapper">
+        <div className="collapse top-search" id="collapseExample">
+            <div className="card card-block">
+                <div className="newsletter-widget text-center">
+                    
+                </div>
             </div>
-          </section>
-
-      </div>
-
-
-      <section id="contact">
-        <div className="inner">
-          <section>
-            <form method="post" action="#">
-              <div className="fields">
-                <div className="field half">
-                  <label htmlFor="name">Name</label>
-                  <input type="text" name="name" id="name" />
-                </div>
-                <div className="field half">
-                  <label htmlFor="email">Email</label>
-                  <input type="text" name="email" id="email" />
-                </div>
-                <div className="field">
-                  <label htmlFor="message">Message</label>
-                  <textarea name="message" id="message" rows="6"></textarea>
-                </div>
-              </div>
-              <ul className="actions">
-                <li><input type="submit" value="Send Message" className="primary" /></li>
-                <li><input type="reset" value="Clear" /></li>
-              </ul>
-            </form>
-          </section>
-          <section className="split">
-            <section>
-              <div className="contact-method">
-                <span className="icon solid alt fa-envelope"></span>
-                <h3>Email</h3>
-                <a href="#">information@untitled.tld</a>
-              </div>
-            </section>
-            <section>
-              <div className="contact-method">
-                <span className="icon solid alt fa-phone"></span>
-                <h3>Phone</h3>
-                <span>(000) 000-0000 x12387</span>
-              </div>
-            </section>
-            <section>
-              <div className="contact-method">
-                <span className="icon solid alt fa-home"></span>
-                <h3>Address</h3>
-                <span>1234 Somewhere Road #5432<br />
-                Nashville, TN 00000<br />
-                United States of America</span>
-              </div>
-            </section>
-          </section>
         </div>
-      </section>
 
+        <div className="topbar-section">
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-lg-4 col-md-6 col-sm-6 hidden-xs-down">
+                        <div className="topsocial">
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Youtube"><i class="fa fa-youtube"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Pinterest"><i class="fa fa-pinterest"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Flickr"><i class="fa fa-flickr"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Google+"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
 
-      <footer id="footer">
-        <div className="inner">
-          <ul className="icons">
-            <li><a href="#" className="icon brands alt fa-twitter"><span className="label">Twitter</span></a></li>
-            <li><a href="#" className="icon brands alt fa-facebook-f"><span className="label">Facebook</span></a></li>
-            <li><a href="#" className="icon brands alt fa-instagram"><span className="label">Instagram</span></a></li>
-            <li><a href="#" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
-            <li><a href="#" className="icon brands alt fa-linkedin-in"><span className="label">LinkedIn</span></a></li>
-          </ul>
-          <ul className="copyright">
-            <li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-          </ul>
+                    <div className="col-lg-4 hidden-md-down">
+                    </div>
+
+                    <div className="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div className="topsearch text-right">
+                            <a data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample"><i class="fa fa-search"></i> Search</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </footer>
 
+        <div className="header-section">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="logo">
+                            <a href="garden-index.html"><img src="images/version/garden-logo.png" alt=""/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <header className="header">
+            <div className="container">
+                <nav className="navbar navbar-inverse navbar-toggleable-md">
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#Forest Timemenu" aria-controls="Forest Timemenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse justify-content-md-center" id="Forest Timemenu">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <a className="nav-link color-green-hover" href="garden-index.html">Home</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <section className="section first-section">
+            <div className="container-fluid">
+                <div className="masonry-blog clearfix">
+                    <div className="left-side">
+                        <div className="masonry-box post-media">
+                             <img src="upload/garden_cat_01.jpg" alt="" className="img-fluid"/>
+                             <div className="shadoweffect">
+                                <div className="shadow-desc">
+                                    <div className="blog-meta">
+                                        <span className="bg-aqua"><a href="blog-category-01.html" title="">Gardening</a></span>
+                                        <h4><a href="garden-single.html" title="">How to choose high quality soil for your gardens</a></h4>
+                                        <small><a href="garden-single.html" title="">21 July, 2017</a></small>
+                                        <small><a href="#" title="">by Amanda</a></small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div className="center-side">
+                        <div className="masonry-box post-media">
+                             <img src="upload/garden_cat_02.jpg" alt="" className="img-fluid"/>
+                             <div className="shadoweffect">
+                                <div className="shadow-desc">
+                                    <div className="blog-meta">
+                                        <span className="bg-aqua"><a href="blog-category-01.html" title="">Outdoor</a></span>
+                                        <h4><a href="garden-single.html" title="">You can create a garden with furniture in your home</a></h4>
+                                        <small><a href="garden-single.html" title="">19 July, 2017</a></small>
+                                        <small><a href="#" title="">by Amanda</a></small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="right-side hidden-md-down">
+                        <div className="masonry-box post-media">
+                             <img src="upload/garden_cat_03.jpg" alt="" className="img-fluid"/>
+                             <div className="shadoweffect">
+                                <div className="shadow-desc">
+                                    <div className="blog-meta">
+                                        <span className="bg-aqua"><a href="blog-category-01.html" title="">Indoor</a></span>
+                                        <h4><a href="garden-single.html" title="">The success of the 10 companies in the vegetable sector</a></h4>
+                                        <small><a href="garden-single.html" title="">03 July, 2017</a></small>
+                                        <small><a href="#" title="">by Jessica</a></small>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section className="section wb">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                        <div className="page-wrapper">
+                            <div className="blog-list clearfix">
+                                <div className="blog-box row">
+                                    <div className="col-md-4">
+                                        <div className="post-media">
+                                            <a href="garden-single.html" title="">
+                                                <img src="upload/garden_sq_01.jpg" alt="" className="img-fluid"/>
+                                                <div className="hovereffect"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div className="blog-meta big-meta col-md-8">
+                                        <span className="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
+                                        <h4><a href="garden-single.html" title="">The best twenty plant species you can look at at home</a></h4>
+                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                        <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i> 1887</a></small>
+                                        <small><a href="garden-single.html" title="">11 July, 2017</a></small>
+                                        <small><a href="#" title="">by Matilda</a></small>
+                                    </div>
+                                </div>
+
+                                <hr className="invis"/>
+
+                                <div className="blog-box row">
+                                    <div className="col-md-4">
+                                        <div className="post-media">
+                                            <a href="garden-single.html" title="">
+                                                <img src="upload/garden_sq_02.jpg" alt="" className="img-fluid"/>
+                                                <div className="hovereffect"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div className="blog-meta big-meta col-md-8">
+                                        <span className="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
+                                        <h4><a href="garden-single.html" title="">How do you like the idea of creating a garden from the Amazon forests?</a></h4>
+                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                        <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i> 4441</a></small>
+                                        <small><a href="garden-single.html" title="">10 July, 2017</a></small>
+                                        <small><a href="#" title="">by Matilda</a></small>
+                                    </div>
+                                </div>
+
+                                <hr className="invis"/>
+
+                                <div className="blog-box row">
+                                    <div className="col-md-4">
+                                        <div className="post-media">
+                                            <a href="garden-single.html" title="">
+                                                <img src="upload/garden_sq_03.jpg" alt="" className="img-fluid"/>
+                                                <div className="hovereffect"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div className="blog-meta big-meta col-md-8">
+                                        <span className="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
+                                        <h4><a href="garden-single.html" title="">Top 20 cafeterias decorated with quality plants</a></h4>
+                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                        <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i> 1234</a></small>
+                                        <small><a href="garden-single.html" title="">09 July, 2017</a></small>
+                                        <small><a href="#" title="">by Matilda</a></small>
+                                    </div>
+                                </div>
+
+                                <hr className="invis"/>
+
+                                
+
+                                <hr className="invis"/>
+
+                                <div className="blog-box row">
+                                    <div className="col-md-4">
+                                        <div className="post-media">
+                                            <a href="garden-single.html" title="">
+                                                <img src="upload/garden_sq_04.jpg" alt="" className="img-fluid"/>
+                                                <div className="hovereffect"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div className="blog-meta big-meta col-md-8">
+                                        <span className="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
+                                        <h4><a href="garden-single.html" title="">30 beautiful flowers you can look at in offices and workplaces</a></h4>
+                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                        <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i> 4441</a></small>
+                                        <small><a href="garden-single.html" title="">08 July, 2017</a></small>
+                                        <small><a href="#" title="">by Matilda</a></small>
+                                    </div>
+                                </div>
+
+                                <hr className="invis"/>
+
+                                <div className="blog-box row">
+                                    <div className="col-md-4">
+                                        <div className="post-media">
+                                            <a href="garden-single.html" title="">
+                                                <img src="upload/garden_sq_05.jpg" alt="" className="img-fluid"/>
+                                                <div className="hovereffect"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div className="blog-meta big-meta col-md-8">
+                                        <span claclassNamess="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
+                                        <h4><a href="garden-single.html" title="">Enjoy your living room with small garden biblings</a></h4>
+                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                        <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i> 2235</a></small>
+                                        <small><a href="garden-single.html" title="">07 July, 2017</a></small>
+                                        <small><a href="#" title="">by Matilda</a></small>
+                                    </div>
+                                </div>
+
+                                
+
+                                <div className="blog-box row">
+                                    <div className="col-md-4">
+                                        <div className="post-media">
+                                            <a href="garden-single.html" title="">
+                                                <img src="upload/garden_sq_06.jpg" alt="" className="img-fluid"/>
+                                                <div className="hovereffect"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div className="blog-meta big-meta col-md-8">
+                                        <span className="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
+                                        <h4><a href="garden-single.html" title="">Why do you prefer small flowers at your workplace?</a></h4>
+                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
+                                        <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i> 1567</a></small>
+                                        <small><a href="garden-single.html" title="">06 July, 2017</a></small>
+                                        <small><a href="#" title="">by Matilda</a></small>
+                                    </div>
+                                </div>
+
+                                <hr className="invis"/>
+
+                                <div className="blog-box row">
+                                    <div className="col-md-4">
+                                        <div className="post-media">
+                                            <a href="garden-single.html" title="">
+                                                <img src="upload/garden_sq_07.jpg" alt="" className="img-fluid"/>
+                                                <div className="hovereffect"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    
+                                </div>
+
+                                
+
+                                
+                            </div>
+                        </div>
+
+                        
+
+                        <div className="row">
+                            <div className="col-md-12">
+                                <nav aria-label="Page navigation">
+                                    <ul className="pagination justify-content-start">
+                                        <li className="page-item"><a className="page-link" href="#">1</a></li>
+                                        <li className="page-item"><a className="page-link" href="#">2</a></li>
+                                        <li className="page-item"><a className="page-link" href="#">3</a></li>
+                                        <li className="page-item">
+                                            <a className="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                        <div className="sidebar">
+                            <div className="widget">
+                                <h2 className="widget-title">Search</h2>
+                                <form className="form-inline search-form">
+                                    <div claclassNamess="form-group">
+                                        <input type="text" className="form-control" placeholder="Search on the site"/>
+                                    </div>
+                                    <button type="submit" className="btn btn-primary"><i className="fa fa-search"></i></button>
+                                </form>
+                            </div>
+
+                            <div className="widget">
+                                <h2 className="widget-title">Recent Posts</h2>
+                                <div className="blog-list-widget">
+                                    <div className="list-group">
+                                        <a href="garden-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div className="w-100 justify-content-between">
+                                                <img src="upload/garden_sq_09.jpg" alt="" className="img-fluid float-left"/>
+                                                <h5 className="mb-1">5 Beautiful buildings you need to before dying</h5>
+                                                <small>12 Jan, 2016</small>
+                                            </div>
+                                        </a>
+
+                                        <a href="garden-single.html" className="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div className="w-100 justify-content-between">
+                                                <img src="upload/garden_sq_06.jpg" alt="" className="img-fluid float-left"/>
+                                                <h5 className="mb-1">Let's make an introduction for creative life</h5>
+                                                <small>11 Jan, 2016</small>
+                                            </div>
+                                        </a>
+
+                                        <a href="garden-single.html" className="list-group-item list-group-item-action flex-column align-items-start">
+                                            <div className="w-100 last-item justify-content-between">
+                                                <img src="upload/garden_sq_02.jpg" alt="" className="img-fluid float-left"/>
+                                                <h5 className="mb-1">Did you see the most beautiful sea in the world?</h5>
+                                                <small>07 Jan, 2016</small>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
+                            
+
+                            <div className="widget">
+                                <h2 className="widget-title">Popular Categories</h2>
+                                <div className="link-widget">
+                                    <ul>
+                                        <li><a href="#">Gardening <span>(21)</span></a></li>
+                                        <li><a href="#">Outdoor Living <span>(15)</span></a></li>
+                                        <li><a href="#">Indoor Living <span>(31)</span></a></li>
+                                        <li><a href="#">Shopping Guides <span>(22)</span></a></li>
+                                        <li><a href="#">Pool Design <span>(66)</span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer className="footer">
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-8 offset-lg-2">
+                        <div className="widget">
+                            <div className="footer-text text-center">
+                                <a href="index.html"><img src="images/version/garden-footer-logo.png" alt="" class="img-fluid"/></a>
+                                <p>Forest Time is a personal blog for handcrafted, cameramade photography content, fashion styles from independent creatives around the world.</p>
+                                
+
+                                <hr className="invis"/>
+
+                                <div className="newsletter-widget text-center">
+                                    <form className="form-inline">
+                                        <input type="text" class="form-control" placeholder="Enter your email address"/>
+                                        <button type="submit" className="btn btn-primary">Subscribe <i className="fa fa-envelope-open-o"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="row">
+                    <div className="col-md-12 text-center">
+                        <br/>
+                        <br/>
+                        <div className="copyright">&copy; Forest Time. Design: <a href="http://html.design">HTML Design</a>.</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        
+        
     </div>
 
-
-    
-    </div>
-    
   );
 }
 
