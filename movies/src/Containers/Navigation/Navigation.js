@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { NavLink } from 'react-router-dom';
+
 const Navigation = props => {
 
     return(
@@ -7,10 +9,19 @@ const Navigation = props => {
         <div className="container">
             <nav className="navbar navbar-inverse navbar-toggleable-md">
                 
-                <div className="collapse navbar-collapse justify-content-md-center" id="Forest Timemenu">
+                <div className="navbar-collapse justify-content-md-center">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link color-green-hover" href="garden-index.html">Home</a>
+                            <NavLink 
+                            to="/" 
+                            className="nav-link color-green-hover"
+                            >Home</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink 
+                            to="/auth" 
+                            className="nav-link color-green-hover"
+                            >Login</NavLink>
                         </li>
                         
                     </ul>

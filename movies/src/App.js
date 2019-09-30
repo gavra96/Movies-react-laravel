@@ -1,43 +1,31 @@
-import React from 'react';
-import TopBar from './Containers/TopBar/TopBar';
-import Navigation from './Containers/Navigation/Navigation';
-import MainLogo from './Containers/MainLogo/MainLogo';
-import TopMovies from './Containers/TopMovies/TopMovies';
-import LatestMovies from './Containers/LatestMovies/LatestMovies';
-import MainSideBar from './Containers/MainSideBar/MainSideBar';
-import Footer from './Containers/Footer/Footer';
-import Auth from './Containers/Auth/Auth';
+import React, { Suspense } from 'react';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import Layout from './Hoc/Layout/layout';
+import FirstPage from './Containers/FirstPage/FirstPage';
 
-function App() {
+
+
+const Auth = React.lazy(()=> {
+  return import('./Containers/Auth/Auth');
+});
+
+let routes = (
+  <Switch>
+    <Route path="/auth" render={() => <Auth />} />
+    <Route path="/" exact component={FirstPage} />
+    <Redirect to="/" />
+  </Switch>
+);
+
+const App =() => {
   return (
-    <div className="wrapper">
-        <TopBar/>
-        <MainLogo/>
-        <Navigation/>
-
-        
-        <Auth/>
-
-        <TopMovies/>
-
-        
-        <section className="section wb">
-            <div className="container">
-                <div className="row">
-
-                    {// ovde ide browserRouter iznad row 
-                    }
-                    
-                    <LatestMovies/>
-                    <MainSideBar/>
-                </div>
-            </div>
-        </section>
-
-        <Footer/>
-    </div>
+    
+      <Layout>
+        <Suspense fallback={<p>Loading...</p>}>{routes}</Suspense>
+      </Layout>
+    
 
   );
 }
 
-export default App;
+export default withRouter(App);
