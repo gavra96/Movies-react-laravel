@@ -9,4 +9,4 @@ Route::get('/', function (){
 });
 Route::get('/users/api', function (){
     return view('token');
-})->name('users.api');
+})->name('users.api')->middleware('checkAdmin');

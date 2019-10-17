@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
+use App\Role;
 
 class AuthController extends Controller
 {
@@ -26,10 +27,8 @@ class AuthController extends Controller
 
     public function login (Request $request){
         $loginData = $request->validate(
-            [
-                'email' => 'email|required',
-                'password' => 'required'
-            ]
+            ['email' => 'email|required',
+             'password' => 'required']
         );
         if(!auth()->attempt($loginData)){
             return response(['message' => 'Invalid credentials']);
