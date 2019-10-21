@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Api;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
@@ -18,13 +16,11 @@ class AuthController extends Controller
             ]
         );
         $validatedData['password'] = bcrypt($request->password);
-
         $user = User::create($validatedData);
         $accesToken = $user->createToken('authToken')->accessToken;
         return response(['user'=> $user, 'access_token'=>$accesToken]);
-
     }
-
+    
     public function login (Request $request){
         $loginData = $request->validate(
             ['email' => 'email|required',
@@ -35,7 +31,5 @@ class AuthController extends Controller
         }
         $accesToken = auth()->user()->createToken('authToken')->accessToken;
         return response(['user'=> auth()->user(), 'access_token'=>$accesToken]);
-
-
     }
 }

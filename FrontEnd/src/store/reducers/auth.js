@@ -4,14 +4,27 @@ import { updateObject } from "../utility";
 const initialState = {
     token : null,
     user : null,
-    message : null,
+    loading : false,
     error : null
 };
 
-const reducer = (state, action) => {
+const authStart = ( state, action ) => {
+    return updateObject( state, { error : null, loading : true } );
+}
+
+const authSuccess = ( state, action ) => {
+    return updateObject( state, { token : action.token , user : action.user, loading : false } );
+}
+
+const authFail = ( state, action ) => {
+    return updateObject( state, { error : action.error, loading : false } );
+}
+
+const reducer = (state = initialState, action) => {
     switch(action.type){
-        // TO DO
-        // For updating the state use updateObject function!
+        case actionTypes.AUTH_START : return authStart(state, action);
+        case actionTypes.AUTH_SUCCESS : return authSuccess(state, action);
+        case actionTypes.AUTH_FAIL : return authFail(state, action);
         default : return state; 
     }
 };
