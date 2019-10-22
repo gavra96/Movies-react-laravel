@@ -2,4 +2,5 @@
 
 Still in progress 
 
-Front-end app for moveis with hooks and redux/redux-saga app 
+Front-end react with hooks and redux
+Back-end laravel api with passport
