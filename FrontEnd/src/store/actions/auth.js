@@ -14,10 +14,11 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (authData) => {
+export const authSuccess = (token, user) => {
     return {
         type : actionTypes.AUTH_SUCCESS,
-        authData : authData
+        token : token,
+        user : user
     };
 };
 
@@ -39,20 +40,20 @@ export const logout = () => {
 
 export const auth = (email, password) => {
     return dispatch => {
-        dispatch(authStart);
+        dispatch(authStart());
         const authData = {
             email,
             password
         };
-        axios.post('localhost:8001/api/login', authData, {
+        axios.post('http://localhost:8001/api/login', authData, {
             Accept : 'application/json'
         }).then(response => {
             console.log(response);
-            //localStorage.setItem('token', response.data.token); 
-            //dispatch(authSuccess(response.data.token, response.data.user)); check from console log first
+            localStorage.setItem('token', response.data.access_token);
+            localStorage.setItem('expireIn', response.data.expireIn);
+            dispatch(authSuccess(response.data.access_token, response.data.user));
         }).catch(error => {
-            console.log(error);
-            //dispatch(authFail(error.response.message)); console log first
+            dispatch(authFail(error.response.data.message));
         });
     };
 };

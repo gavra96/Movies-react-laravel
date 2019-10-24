@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use Response;
 
 class AuthController extends Controller
 {
@@ -27,9 +28,11 @@ class AuthController extends Controller
              'password' => 'required']
         );
         if(!auth()->attempt($loginData)){
-            return response(['message' => 'Invalid credentials']);
+            return Response::json([
+                'message' => "invalid credentials"
+            ], 401);
         }
         $accesToken = auth()->user()->createToken('authToken')->accessToken;
-        return response(['user'=> auth()->user(), 'access_token'=>$accesToken]);
+        return response(['user'=> auth()->user(), 'access_token'=>$accesToken , 'expireIn' => now()->addDays(2)]);
     }
 }

@@ -6,7 +6,10 @@ const MovieSearch = props => {
     return (
         
         <div className="form-group">
-            <input type="text" className="form-control" value={search} onChange={event => setSearch(event.target.value)} placeholder="Search on the site"/>
+            <input type="text" className="form-control"
+              value={search}
+              onChange={event => setSearch(event.target.value)} 
+              placeholder="Search on the site"/>
 
         </div>
         
