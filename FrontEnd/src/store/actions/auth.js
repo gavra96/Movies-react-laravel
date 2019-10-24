@@ -41,6 +41,10 @@ export const logout = () => {
 export const auth = (email, password) => {
     return dispatch => {
         dispatch(authStart());
+        const authData = {
+            email,
+            password
+        };
         axios.post('http://localhost:8001/api/login', authData, {
             Accept : 'application/json'
         }).then(response => {

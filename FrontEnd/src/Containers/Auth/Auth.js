@@ -34,6 +34,12 @@ const Auth = props => {
 );
 }
 
+const mapStateToProps = state => {
+    return {
+        
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return{
         onAuth : (email, password) => dispatch(actions.auth(email,password))
