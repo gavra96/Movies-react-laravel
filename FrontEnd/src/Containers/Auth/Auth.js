@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import * as actions from '../../store/actions'
 import { connect } from 'react-redux';
  
 const Auth = props => {
     const [email ,setEmail] = useState('');
     const [password ,setPassword] = useState('');
+
+    
 
     const submitLoginHandler = event => {
         event.preventDefault();
@@ -13,6 +15,9 @@ const Auth = props => {
     return(
     
         <div className="col-lg-8 offset-lg-2">
+            {props.errorMessage && <div class="alert alert-danger">
+                {props.errorMessage}
+                </div>}
             <form onSubmit={submitLoginHandler} className="form-wrapper">
                 <p>Login:</p>
                 <input type="text" 
@@ -36,7 +41,7 @@ const Auth = props => {
 
 const mapStateToProps = state => {
     return {
-        
+        errorMessage : state.error
     }
 }
 
@@ -46,5 +51,5 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);
 
