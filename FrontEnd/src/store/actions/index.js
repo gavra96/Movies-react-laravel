@@ -1,4 +1,4 @@
 export {
     auth,
-    logout
+    attemptLogout
 } from './auth';

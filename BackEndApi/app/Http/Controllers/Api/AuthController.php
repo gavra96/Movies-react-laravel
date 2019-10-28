@@ -29,10 +29,22 @@ class AuthController extends Controller
         );
         if(!auth()->attempt($loginData)){
             return Response::json([
-                'message' => "invalid credentials"
+                'message' => "invalid credentials."
             ], 401);
         }
         $accesToken = auth()->user()->createToken('authToken')->accessToken;
-        return response(['user'=> auth()->user(), 'access_token'=>$accesToken , 'expireIn' => now()->addDays(2)]);
+        return response(['user'=> auth()->user(),
+            'access_token'=>$accesToken ,
+            'expireIn' => now()->addDays(2)]);
+    }
+
+    public function logoutApi(){ 
+        if (Auth::check()) {
+        Auth::user()->AauthAcessToken()->delete();
+        return Response::json([
+            'message' => "Logout successfull."
+            ], 200);
+        }
+        return Response::json(['message' => "You are not loged in."], 401);
     }
 }

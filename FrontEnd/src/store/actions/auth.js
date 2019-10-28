@@ -31,12 +31,31 @@ export const authFail = (error) => {
 
 export const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('expireIn');
     return {
         type : actionTypes.AUTH_LOGOUT
     };
 };
 
-// TO DO auto loging
+// attempt to logout on backend
+export const attemptLogout = () => {
+    return dispatch => {
+    const user = localStorage.getItem('token');
+    if(user){
+        axios.post('http://localhost:8001/api/logout', null, {
+            Accept : 'application/json',
+            Authorization: 'Bearer ' + user
+        }).then(response => {
+            dispatch(logout());
+        }).catch(error => {
+            dispatch(authFail(error.response.data.message));
+        });
+
+        }
+    }
+}
+
+// TO DO auto loging  
 
 export const auth = (email, password) => {
     return dispatch => {

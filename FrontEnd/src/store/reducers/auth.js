@@ -21,7 +21,7 @@ const authFail = ( state, action ) => {
 }
 
 const authLogout = (state, action) => {
-    return updateObject(state, { token: null, userId: null });
+    return updateObject(state, { token: null, user: null });
 };
 
 const reducer = (state = initialState, action) => {
