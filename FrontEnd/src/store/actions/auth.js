@@ -37,7 +37,7 @@ export const logout = () => {
     };
 };
 
-// attempt to logout on backend
+// attempt to delete access_token on laravel backend
 export const attemptLogout = () => {
     return dispatch => {
     const user = localStorage.getItem('token');
@@ -69,7 +69,7 @@ export const auth = (email, password) => {
         axios.post('http://localhost:8001/api/login', authData, {
             Accept : 'application/json'
         }).then(response => {
-            console.log(response);
+            //console.log(response);
             localStorage.setItem('token', response.data.access_token);
             localStorage.setItem('expireIn', response.data.expireIn);
             dispatch(authSuccess(response.data.access_token, response.data.user));
