@@ -44,7 +44,9 @@ export const attemptLogout = () => {
     if(user){
         axios.post('http://localhost:8001/api/logout', null, {
             Accept : 'application/json',
+            headers: {
             Authorization: 'Bearer ' + user
+            }
         }).then(response => {
             dispatch(logout());
         }).catch(error => {

@@ -1,8 +1,12 @@
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const Navigation = props => {
+
+    useEffect(()=>{
+
+    }, [props.isAuthenticated])
 
     return(
     <header className="header">
@@ -17,12 +21,28 @@ const Navigation = props => {
                             className="nav-link color-green-hover"
                             >Home</NavLink>
                         </li>
-                        <li className="nav-item">
+                        {!props.isAuthenticated
+                            ? <li className="nav-item">
+                                <NavLink 
+                                to="/auth" 
+                                className="nav-link color-green-hover"
+                                >Login</NavLink>
+                              </li>
+
+
+                            : 
+                            <li className="nav-item">
                             <NavLink 
-                            to="/auth" 
+                            to="/logout" 
                             className="nav-link color-green-hover"
-                            >Login</NavLink>
-                        </li>
+                            >Logout</NavLink>
+                            </li>
+                        
+                        }
+
+
+                        
+                        
                         
                     </ul>
                 </div>
@@ -31,4 +51,11 @@ const Navigation = props => {
     </header>
     );
 }
-export default Navigation;
+
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.token !== null
+    }
+  }
+  
+export default connect(mapStateToProps, null)(Navigation);

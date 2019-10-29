@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Layout from './Hoc/Layout/layout';
 import FirstPage from './Containers/FirstPage/FirstPage';
 
@@ -9,15 +10,31 @@ const Auth = React.lazy(()=> {
   return import('./Containers/Auth/Auth');
 });
 
-let routes = (
-  <Switch>
-    <Route path="/auth" render={() => <Auth />} />
-    <Route path="/" exact component={FirstPage} />
-    <Redirect to="/" />
-  </Switch>
-);
+const Logout = React.lazy(()=> {
+  return import('./Containers/Auth/Logout/Logout');
+});
 
-const App =() => {
+
+
+const App = props => {
+
+  let routes = (
+    <Switch>
+      <Route path="/auth" render={() => <Auth />} />
+      <Route path="/" exact component={FirstPage} />
+      <Redirect to="/" />
+    </Switch>
+  );
+  
+  if ( props.isAuthenticated ) {
+    routes = (
+      <Switch>
+        <Route path="/logout" render={() => <Logout />} />
+        <Route path="/" exact component={FirstPage} />
+        <Redirect to="/" />
+      </Switch>
+    );
+  }
   return (
     
       <Layout>
@@ -28,4 +45,10 @@ const App =() => {
   );
 }
 
-export default withRouter(App);
+const mapStateToProps = state => {
+  return {
+      isAuthenticated: state.token !== null
+  }
+}
+
+export default connect(mapStateToProps, null)(withRouter(App));

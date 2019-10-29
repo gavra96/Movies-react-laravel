@@ -17,7 +17,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(authReducer, composeEnhancers(
     applyMiddleware(thunk)
 ));
- // redux not tested yet
+
 const app = (
     <Provider store={store}>
         <BrowserRouter>

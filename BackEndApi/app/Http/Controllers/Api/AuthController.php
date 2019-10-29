@@ -4,7 +4,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use Auth;
 use Response;
+use Lcobucci\JWT\Parser;
 
 class AuthController extends Controller
 {
@@ -38,13 +40,8 @@ class AuthController extends Controller
             'expireIn' => now()->addDays(2)]);
     }
 
-    public function logoutApi(){ 
-        if (Auth::check()) {
-        Auth::user()->AauthAcessToken()->delete();
-        return Response::json([
-            'message' => "Logout successfull."
-            ], 200);
-        }
-        return Response::json(['message' => "You are not loged in."], 401);
+    public function logoutApi(Request $request){ 
+        $value = $request->bearerToken();
+        $request->user()->token()->revoke();
     }
 }

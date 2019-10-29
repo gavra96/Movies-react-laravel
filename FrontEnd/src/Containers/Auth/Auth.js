@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import * as actions from '../../store/actions'
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
  
 const Auth = props => {
     const [email ,setEmail] = useState('');
     const [password ,setPassword] = useState('');
 
     
-
     const submitLoginHandler = event => {
         event.preventDefault();
         props.onAuth(email, password);
     }
+
+    let authRedirect = null;
+    if (props.isAuthenticated) {
+        authRedirect = <Redirect to="/" />
+    }
     return(
     
         <div className="col-lg-8 offset-lg-2">
+            {authRedirect}
+            
             {props.errorMessage && <div class="alert alert-danger">
                 {props.errorMessage}
                 </div>}
@@ -39,9 +46,11 @@ const Auth = props => {
 );
 }
 
+
 const mapStateToProps = state => {
     return {
-        errorMessage : state.error
+        errorMessage : state.error,
+        isAuthenticated: state.token !== null
     }
 }
 
