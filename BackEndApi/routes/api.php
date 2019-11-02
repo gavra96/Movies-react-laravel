@@ -13,10 +13,9 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
 
 Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');
 Route::post('/logout','Api\AuthController@logoutApi')->middleware('auth:api');
+
+Route::apiResource('movies', 'Api\MovieController');
