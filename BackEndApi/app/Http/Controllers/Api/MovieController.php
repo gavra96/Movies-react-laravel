@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Movie;
 use Response;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Requests\MovieRequest;
 
 class MovieController extends Controller
 {
@@ -16,7 +18,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::paginate();
+        $movies = Movie::with('actors')->paginate(25);
         return Response::json($movies, 200);
     }
 
@@ -26,9 +28,10 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MovieRequest $request)
     {
-        //
+        $movie = Movie::create($request->all());
+        return Response::json($movie, 201);
     }
 
     /**
@@ -39,7 +42,18 @@ class MovieController extends Controller
      */
     public function show($id)
     {
-        //
+        try{
+            $movie = Movie::findOrFail($id)->with('actors')->first();
+            return Response::json($movie, 200);
+        } catch(ModelNotFoundException $e){
+            return Response::json([
+                'message' => "Movie not found."
+            ], 404);
+        }catch(\Exception $e){
+            return Response::json([
+                'message' => "Error accured on server."
+            ], 500);
+        }
     }
 
     /**

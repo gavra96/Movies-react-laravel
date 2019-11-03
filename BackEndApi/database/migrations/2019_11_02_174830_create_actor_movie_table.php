@@ -13,14 +13,14 @@ class CreateMovieActorTable extends Migration
      */
     public function up()
     {
-        Schema::create('movie_actor', function (Blueprint $table) {
+        Schema::create('actor_movie', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedBigInteger('movies_id');
-            $table->unsignedBigInteger('actors_id');
-            $table->foreign('movies_id')
+            $table->unsignedBigInteger('movie_id');
+            $table->unsignedBigInteger('actor_id');
+            $table->foreign('movie_id')
                     ->references('id')->on('movies')
                     ->onDelete('cascade');
-            $table->foreign('actors_id')
+            $table->foreign('actor_id')
                     ->references('id')->on('actors')
                     ->onDelete('cascade');
         });
@@ -33,6 +33,6 @@ class CreateMovieActorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('movie_actor');
+        Schema::dropIfExists('actor_movie');
     }
 }
