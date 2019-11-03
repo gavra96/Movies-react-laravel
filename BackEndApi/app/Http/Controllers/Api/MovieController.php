@@ -65,7 +65,8 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $inputs = $request->except('movie','release_date');
+        User::findOrFail($id)->update($inputs);
     }
 
     /**
