@@ -11,6 +11,11 @@ use App\Http\Requests\MovieRequest;
 
 class MovieController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -18,8 +23,14 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::with('actors')->paginate(25);
-        return Response::json($movies, 200);
+        try{
+            $movies = Movie::with('actors')->paginate(25);
+            return Response::json($movies, 200);
+        }catch(\Exception $e){
+            return Response::json([
+                'message' => "Error accured on server."
+            ], 500);
+        }
     }
 
     /**
@@ -30,8 +41,14 @@ class MovieController extends Controller
      */
     public function store(MovieRequest $request)
     {
-        $movie = Movie::create($request->all());
-        return Response::json($movie, 201);
+        try{
+            $movie = Movie::create($request->all());
+            return Response::json($movie, 201);
+        }catch(\Exception $e){
+            return Response::json([
+                'message' => "Error accured on server."
+            ], 500);
+        }
     }
 
     /**
@@ -43,7 +60,7 @@ class MovieController extends Controller
     public function show($id)
     {
         try{
-            $movie = Movie::findOrFail($id)->with('actors')->first();
+            $movie = Movie::with('actors')->findOrFail($id);
             return Response::json($movie, 200);
         } catch(ModelNotFoundException $e){
             return Response::json([
@@ -65,8 +82,28 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $inputs = $request->except('movie','release_date');
-        User::findOrFail($id)->update($inputs);
+        try{
+            $movie = Movie::findOrFail($id);
+            $fields = ['movie', 'release_date'];
+
+            foreach($fields as $field){
+                //echo $request->$field;
+                if($request->$field != null){
+                    $movie->$field = $request->$field;
+                }
+            }
+            $movie->save();
+            return Response::json(null, 204);
+        } catch(ModelNotFoundException $e){
+            return Response::json([
+                'message' => "Movie not found."
+            ], 404);
+        }catch(\Exception $e){
+            return Response::json([
+                'message' => "Error accured on server."
+            ], 500);
+        }
+        
     }
 
     /**
@@ -77,6 +114,18 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try{
+            $movie = Movie::findOrFail($id);
+            $movie->delete();
+            return Response::json(null, 204);
+        } catch(ModelNotFoundException $e){
+            return Response::json([
+                'message' => "Movie not found."
+            ], 404);
+        }catch(\Exception $e){
+            return Response::json([
+                'message' => "Error accured on server."
+            ], 500);
+        }
     }
 }
