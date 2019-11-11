@@ -24,7 +24,7 @@ class MovieController extends Controller
     public function index()
     {
         try{
-            $movies = Movie::with('actors')->paginate(25);
+            $movies = Movie::with(['user', 'genres', 'company'])->paginate(25);
             return Response::json($movies, 200);
         }catch(\Exception $e){
             return Response::json([
@@ -60,7 +60,7 @@ class MovieController extends Controller
     public function show($id)
     {
         try{
-            $movie = Movie::with('actors')->findOrFail($id);
+            $movie = Movie::with(['actors', 'user', 'genres', 'company'])->findOrFail($id);
             return Response::json($movie, 200);
         } catch(ModelNotFoundException $e){
             return Response::json([
