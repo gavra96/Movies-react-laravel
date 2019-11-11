@@ -17,6 +17,15 @@ class CreateMoviesTable extends Migration
             $table->bigIncrements('id');
             $table->string('movie');
             $table->date('release_date');
+            $table->string('main_image')->nullable()->default('1.jpg');
+            $table->integer('time_in_secounds')->nullable();
+            $table->text('description');
+            $table->string('language')->default('English')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('company_id');
+
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('company_id')->references('id')->on('companies');
 
             $table->softDeletes();
 
