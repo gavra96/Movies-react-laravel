@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-
+import Auth from '../Auth/Auth';
 const Navigation = props => {
+    
+    const [authDialog ,setAuthDialog] = useState(false);
 
     useEffect(()=>{
 
     }, [props.isAuthenticated])
+
 
     return(
     <header className="header">
@@ -22,12 +25,11 @@ const Navigation = props => {
                             >Home</NavLink>
                         </li>
                         {!props.isAuthenticated
-                            ? <li className="nav-item">
-                                <NavLink 
-                                to="/auth" 
-                                className="nav-link color-green-hover"
-                                >Login</NavLink>
-                              </li>
+                            ? 
+                            <li class="page-item">
+                                <a class="page-link" onClick={() => {setAuthDialog(true)}}>Login</a>
+                            </li>
+                            
 
 
                             : 
@@ -39,6 +41,7 @@ const Navigation = props => {
                             </li>
                         
                         }
+                        <Auth handleAuth={authDialog} close={()=>{setAuthDialog(false)}}></Auth>
 
 
                         

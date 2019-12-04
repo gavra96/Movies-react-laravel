@@ -5,11 +5,6 @@ import Layout from './Hoc/Layout/layout';
 import FirstPage from './Containers/FirstPage/FirstPage';
 
 
-
-const Auth = React.lazy(()=> {
-  return import('./Containers/Auth/Auth');
-});
-
 const Logout = React.lazy(()=> {
   return import('./Containers/Auth/Logout/Logout');
 });
@@ -20,7 +15,6 @@ const App = props => {
 
   let routes = (
     <Switch>
-      <Route path="/auth" render={() => <Auth />} />
       <Route path="/" exact component={FirstPage} />
       <Redirect to="/" />
     </Switch>

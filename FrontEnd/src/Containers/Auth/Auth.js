@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import * as actions from '../../store/actions'
+import * as actions from '../../store/actions';
+import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import Dialog from '@material-ui/core/Dialog';
+import DialogContent from '@material-ui/core/DialogContent';
+import Button from '@material-ui/core/Button';
+import DialogTitle from '@material-ui/core/DialogTitle';
  
 const Auth = props => {
     const [email ,setEmail] = useState('');
@@ -13,36 +17,38 @@ const Auth = props => {
         props.onAuth(email, password);
     }
 
-    let authRedirect = null;
-    if (props.isAuthenticated) {
-        authRedirect = <Redirect to="/" />
-    }
     return(
-    
-        <div className="col-lg-8 offset-lg-2">
-            {authRedirect}
+        <div>
+        <Dialog open={props.handleAuth} onClose={props.close} aria-labelledby="form-dialog-title">
+            <DialogTitle id="form-dialog-title">Login</DialogTitle>
+            <DialogContent>
             
-            {props.errorMessage && <div class="alert alert-danger">
-                {props.errorMessage}
-                </div>}
-            <form onSubmit={submitLoginHandler} className="form-wrapper">
-                <p>Login:</p>
-                <input type="text" 
-                    className="form-control" 
-                    placeholder="Your username"
-                    value={email}
-                    onChange={(event) => setEmail(event.target.value)}
+                
+                
+                {props.errorMessage }
+                {props.isAuthenticated? props.close() : null}
+                <form onSubmit={submitLoginHandler} className="form-wrapper">
+                    <p>Login:</p>
+                    <TextField type="text" 
+                        className="form-control" 
+                        placeholder="Your username"
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                        />
+                    <TextField type="password"
+                        className="form-control"
+                        placeholder="Your password"
+                        value={password}
+                        onChange={event => setPassword(event.target.value)} 
                     />
-                <input type="password"
-                    className="form-control"
-                    placeholder="Your password"
-                    value={password}
-                    onChange={event => setPassword(event.target.value)} 
-                  />
-                <button type="submit" className="btn btn-primary">Login <i className="fa fa-envelope-open-o"></i></button>
-            </form>
-        </div>
-    
+                    <Button onClick={props.close} color="primary">
+                        Cancel
+                    </Button>
+                    <Button type="submit">Login </Button>
+                </form>
+            </DialogContent>       
+        </Dialog> 
+        </div> 
 );
 }
 

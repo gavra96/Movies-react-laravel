@@ -42,7 +42,7 @@ export const attemptLogout = () => {
     return dispatch => {
     const user = localStorage.getItem('token');
     if(user){
-        axios.post('http://localhost:8001/api/logout', null, {
+        axios.post('http://localhost:8888/api/logout', null, {
             Accept : 'application/json',
             headers: {
             Authorization: 'Bearer ' + user
@@ -66,7 +66,7 @@ export const auth = (email, password) => {
             email,
             password
         };
-        axios.post('http://localhost:8001/api/login', authData, {
+        axios.post('http://localhost:8888/api/login', authData, {
             Accept : 'application/json'
         }).then(response => {
             //console.log(response);
