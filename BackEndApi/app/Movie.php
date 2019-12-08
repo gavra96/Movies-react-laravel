@@ -16,7 +16,8 @@ class Movie extends Model
         'main_image',
         'time_in_secounds',
         'description',
-        'language' 
+        'language',
+        'company_id'
     ];
 
     public function actors()

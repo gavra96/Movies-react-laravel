@@ -26,8 +26,8 @@ const Navigation = props => {
                         </li>
                         {!props.isAuthenticated
                             ? 
-                            <li class="page-item">
-                                <a class="page-link" onClick={() => {setAuthDialog(true)}}>Login</a>
+                            <li className="page-item">
+                                <a className="page-link" onClick={() => {setAuthDialog(true)}}>Login</a>
                             </li>
                             
 

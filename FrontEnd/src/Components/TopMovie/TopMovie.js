@@ -4,14 +4,14 @@ const TopMovie = props => {
     return(
             <div className="left-side">
                 <div className="masonry-box post-media">
-                     <img src="upload/garden_cat_01.jpg" alt="" className="img-fluid"/>
+                     <img src="upload/garden_cat_01.jpg"  className="img-fluid"/>
                      <div className="shadoweffect">
                         <div className="shadow-desc">
                             <div className="blog-meta">
-                                <span className="bg-aqua"><a href="blog-category-01.html" title="">Gardening</a></span>
-                                <h4><a href="garden-single.html" title="">How to choose high quality soil for your gardens</a></h4>
-                                <small><a href="garden-single.html" title="">21 July, 2017</a></small>
-                                <small><a href="#" title="">by Amanda</a></small>
+                                <span className="bg-aqua"><a href="blog-category-01.html" >Gardening</a></span>
+                                <h4><a href="garden-single.html" >How to choose high quality soil for your gardens</a></h4>
+                                <small><a  >21 July, 2017</a></small>
+                                <small><a  >by Amanda</a></small>
                             </div>
                         </div>
                     </div>

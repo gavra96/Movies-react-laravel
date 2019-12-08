@@ -1,31 +1,21 @@
 <?php
 
 namespace App\Http\Requests;
-
+use App\Movie;
+use Response;
 use Illuminate\Foundation\Http\FormRequest;
 
 class MovieRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
-    {
-        return true;
-    }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    
+    public function uploadMovieImage()
     {
-        return [
-            'movie' => 'required|max:100',
-            'release_date' => 'required|date',
-        ];
+        $uploadedImage = $this->main_image;
+        $this->filename = str_slug($this->movie) . time() . '.' . $uploadedImage->getClientOriginalExtension();
+        $uploadedImage->storePubliclyAs('public/movies/'. $this->filename, null);
+        return $this;
+
     }
+  
 }

@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use App\Movie;
 use Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Http\Requests\MovieRequest;
+use App\Http\Requests\CreateMovieRequest;
+use App\Http\Requests\UpdateMovieRequest;
 
 class MovieController extends Controller
 {
@@ -24,7 +25,7 @@ class MovieController extends Controller
     public function index()
     {
         try{
-            $movies = Movie::with(['user', 'genres', 'company'])->paginate(25);
+            $movies = Movie::with(['user', 'genres'])->orderBy('id', 'desc')->paginate(10);
             return Response::json($movies, 200);
         }catch(\Exception $e){
             return Response::json([
@@ -39,14 +40,14 @@ class MovieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MovieRequest $request)
+    public function store(CreateMovieRequest $request)
     {
         try{
-            $movie = Movie::create($request->all());
-            return Response::json($movie, 201);
+            $request->uploadMovieImage()->createMovie();
+            return response()->json(['movie' => $request->movie], 201);
         }catch(\Exception $e){
             return Response::json([
-                'message' => "Error accured on server."
+                'message' => $e->getMessage()
             ], 500);
         }
     }
@@ -80,20 +81,15 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateMovieRequest $request, $id)
     {
         try{
             $movie = Movie::findOrFail($id);
-            $fields = ['movie', 'release_date'];
-
-            foreach($fields as $field){
-                //echo $request->$field;
-                if($request->$field != null){
-                    $movie->$field = $request->$field;
-                }
+            if(auth()->user()->id === $movie->user->id){
+                $request->updateMovie($movie);
+                return Response::json(null, 204);
             }
-            $movie->save();
-            return Response::json(null, 204);
+            return Response::json(['message' => 'Unauthorized.'], 401);
         } catch(ModelNotFoundException $e){
             return Response::json([
                 'message' => "Movie not found."
@@ -116,8 +112,11 @@ class MovieController extends Controller
     {
         try{
             $movie = Movie::findOrFail($id);
-            $movie->delete();
-            return Response::json(null, 204);
+            if(auth()->user()->id === $movie->user->id){
+                $movie->delete();
+                return Response::json(null, 204);
+            }
+            return Response::json(['message' => 'Unauthorized.'], 401);
         } catch(ModelNotFoundException $e){
             return Response::json([
                 'message' => "Movie not found."
@@ -128,4 +127,6 @@ class MovieController extends Controller
             ], 500);
         }
     }
+
+
 }

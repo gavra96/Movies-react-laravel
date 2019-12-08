@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as actions from '../../store/actions';
 import TextField from '@material-ui/core/TextField';
 import { connect } from 'react-redux';

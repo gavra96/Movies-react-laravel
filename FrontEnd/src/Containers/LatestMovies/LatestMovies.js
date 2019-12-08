@@ -1,59 +1,59 @@
-import React from 'react';
-
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Movie from './Movie/Movie';
+import Pager from '../UI/Pager/Pager';
 const LatestMovies = props => {
+    
+    const [ movies , setMovies ] = useState([]);
+    const [ res , setRes ] = useState(null);// response
+    const [ page , setPage ] = useState(null);
+
+
+
+    
+
+    useEffect(()=>{
+        let url = 'http://localhost:8888/api/movies';
+        if(page !== null && page > 1){
+            url += '?page='+page;
+        }
+        
+        
+
+        axios.get(url, null, {
+            Accept : 'application/json'
+        }).then(response => {
+            setMovies(response.data.data);
+            setRes(response.data);
+        }).catch(error => {
+            //
+        });
+
+    }, [page]);
+
+    
+    const rederMovies = movies.map(movie => {
+        return <Movie key={movie.id} moviedata={movie} />
+    });
+   
+    
 
     return(
-<div className="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-                        <div className="page-wrapper">
-                            <div className="blog-list clearfix">
-                                <div className="blog-box row">
-                                    <div className="col-md-4">
-                                        <div className="post-media">
-                                            <a href="garden-single.html" title="">
-                                                <img src="upload/garden_sq_01.jpg" alt="" className="img-fluid"/>
-                                                <div className="hovereffect"></div>
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <div className="blog-meta big-meta col-md-8">
-                                        <span className="bg-aqua"><a href="garden-category.html" title="">Indoor</a></span>
-                                        <h4><a href="garden-single.html" title="">The best twenty plant species you can look at at home</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enim nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i> 1887</a></small>
-                                        <small><a href="garden-single.html" title="">11 July, 2017</a></small>
-                                        <small><a href="#" title="">by Matilda</a></small>
-                                    </div>
-                                </div>
-
-                                <hr className="invis"/>
-
-                                
-                            </div>
-                        </div>
-
+                    <div className="col-lg-9 col-md-12 col-sm-12 col-xs-12">
                         
-
-                        <div className="row">
-                            <div className="col-md-12">
-                                <nav aria-label="Page navigation">
-                                    <ul className="pagination justify-content-start">
-                                        <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                        <li className="page-item">
-                                            <a className="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
+                        {rederMovies && rederMovies}
+                        
+                        <Pager res={res} setPage={setPage} />
+                        
                     </div>
     );
 
 }
 
+
+
+
 export default LatestMovies;
+
 
 
