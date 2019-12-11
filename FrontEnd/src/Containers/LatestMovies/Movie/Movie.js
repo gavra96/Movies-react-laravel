@@ -24,7 +24,7 @@ const Movies = props => {
                 {genres}
                 <h4><a href="garden-single.html" title="">{props.moviedata.movie}</a></h4>
                 <p>{props.moviedata.description}</p>
-                <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i>12312 </a></small>
+                <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i>{props.moviedata.views} </a></small>
                 <small><a href="garden-single.html" title="">{props.moviedata.release_date}</a></small>
                 <small><a href="#" title="">by {props.moviedata.user.name}</a></small>
             </div>

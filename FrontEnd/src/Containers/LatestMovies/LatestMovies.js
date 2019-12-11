@@ -17,9 +17,6 @@ const LatestMovies = props => {
         if(page !== null && page > 1){
             url += '?page='+page;
         }
-        
-        
-
         axios.get(url, null, {
             Accept : 'application/json'
         }).then(response => {

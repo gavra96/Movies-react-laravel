@@ -20,6 +20,8 @@ class CreateActorsTable extends Migration
             $table->date('born_at');
             $table->date('died_at')->nullable();
             $table->softDeletes();
+            $table->timestamps();
+
         });
     }
 

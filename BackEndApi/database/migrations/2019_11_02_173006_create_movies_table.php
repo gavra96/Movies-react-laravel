@@ -23,6 +23,7 @@ class CreateMoviesTable extends Migration
             $table->string('language')->default('English')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('company_id');
+            $table->integer('views')->default(0);
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('company_id')->references('id')->on('companies');
