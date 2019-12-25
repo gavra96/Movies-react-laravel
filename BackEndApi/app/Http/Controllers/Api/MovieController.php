@@ -9,12 +9,15 @@ use Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Requests\CreateMovieRequest;
 use App\Http\Requests\UpdateMovieRequest;
+use App\Http\Traits\MovieTrait;
 
 class MovieController extends Controller
 {
+    use MovieTrait;
+
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'movieSearch']]);
     }
 
     /**
