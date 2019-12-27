@@ -1,20 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MovieShow from '../../MovieShow/MovieShow';
+import Modal from '../../UI/Modal/Modal';
 
 
 const Movies = props => {
+
+    const [modal, setModal] = useState(false);
+
 
     const genres = props.moviedata.genres.map(genre => {
         return <span className="bg-aqua" key={genre.id}>{genre.name}</span> 
     });
 
+
     return(
-    <div className="page-wrapper">
+    <div className="page-wrapper" > 
         <div className="blog-list clearfix">
         <div className="blog-box row">
             <div className="col-md-4">
                 <div className="post-media">
                 
-                        <img src={'http://localhost:8888/storage/movies/' + props.moviedata.main_image} alt={props.moviedata.main_image} className="img-fluid"/>
+                        <img src={'http://localhost:8888/storage/movies/' + props.moviedata.main_image} alt={props.moviedata.main_image} className="img-fluid" style={{borderRadius: 10}}/>
                         <div className="hovereffect"></div>
                     
                 </div>
@@ -22,7 +28,7 @@ const Movies = props => {
 
             <div className="blog-meta big-meta col-md-8">
                 {genres}
-                <h4><a href="garden-single.html" title="">{props.moviedata.movie}</a></h4>
+                <h4 onClick={() => {setModal(true)}}><a>{props.moviedata.movie} </a></h4>
                 <p>{props.moviedata.description}</p>
                 <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i>{props.moviedata.views} </a></small>
                 <small><a href="garden-single.html" title="">{props.moviedata.release_date}</a></small>
@@ -31,7 +37,9 @@ const Movies = props => {
         </div>
 
         <hr className="invis"/>
-
+        <Modal open={modal} close={() => setModal(false)} title="" >
+              <MovieShow movieId={props.moviedata.id} />
+        </Modal>
         
         </div>
     </div>
