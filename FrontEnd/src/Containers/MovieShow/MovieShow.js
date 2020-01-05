@@ -15,9 +15,9 @@ const MovieShow = props => {
               //TO DO:global error caching 
             });
         }
-    },[])
+    },[props.movieId])
 
-    console.log(movie);
+    //console.log(movie);
 
     return(
       <div>
@@ -103,17 +103,3 @@ const MovieShow = props => {
 }
 
 export default MovieShow;
-
-// za upload slike kasnije ce mi trebati
-
-//<div className="col-lg-4 order-lg-1 text-center">
-{/* <img src="//placehold.it/150" className="mx-auto img-fluid img-circle d-block" alt="avatar"/>
-<h6 className="mt-2">Upload a different photo</h6>
-<label className="custom-file">
-    <input type="file" id="file" className="custom-file-input"/>
-    <span className="custom-file-control">Choose file</span>
-</label>
-
-    
-
-</div> */}

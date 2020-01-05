@@ -1,6 +1,5 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import TopBar from '../../Containers/TopBar/TopBar';
 import Navigation from '../../Containers/Navigation/Navigation';
 import MainLogo from '../../Containers/MainLogo/MainLogo';
 import Footer from '../../Containers/Footer/Footer';
@@ -14,7 +13,7 @@ const layout = props => {
     
     <div className="wrapper">
     
-    <TopBar/>
+    
     <MainLogo/>
     <Navigation/>
 

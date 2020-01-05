@@ -17,7 +17,7 @@ class MovieController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['index', 'show', 'movieSearch']]);
+        $this->middleware('auth:api', ['except' => ['index', 'show', 'movieSearch', 'getTopViewedMovies']]);
     }
 
     /**

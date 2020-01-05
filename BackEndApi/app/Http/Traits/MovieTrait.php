@@ -9,4 +9,9 @@ trait MovieTrait {
         $movie = Movie::where('movie', 'like', '%' . $movieQueryParam . '%')->get();
         return $movie;
     }
+
+    public function getTopViewedMovies($limit = 3)
+    {
+        return Movie::with(['user'])->orderBy('views', 'DESC')->take($limit)->get();
+    }
 }

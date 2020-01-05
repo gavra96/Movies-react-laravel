@@ -20,3 +20,5 @@ Route::post('/logout','Api\AuthController@logoutApi')->middleware('auth:api');
 
 Route::apiResource('movies', 'Api\MovieController');
 Route::get('/movie/search/{name}', 'Api\MovieController@movieSearch');
+Route::get('/top/movies/{number?}', 'Api\MovieController@getTopViewedMovies');
+

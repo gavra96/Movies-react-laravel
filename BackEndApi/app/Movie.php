@@ -41,10 +41,12 @@ class Movie extends Model
         return $this->belongsTo(Company::class);
     }
 
-    public function movie_slug()
+    public function getMovieSlugAttribute()
     {
-        # code...
+        return str_slug($this->movie);
     }
+
+
 
     
 }
