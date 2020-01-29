@@ -28,7 +28,7 @@ const Movies = props => {
 
             <div className="blog-meta big-meta col-md-8">
                 {genres}
-                <h4 onClick={() => {setModal(true)}}><a>{props.moviedata.movie} </a></h4>
+                <a href="#" title=""><h4 onClick={() => {setModal(true)}}>{props.moviedata.movie} </h4></a>
                 <p>{props.moviedata.description}</p>
                 <small><a href="garden-category.html" title=""><i className="fa fa-eye"></i>{props.moviedata.views} </a></small>
                 <small><a href="garden-single.html" title="">{props.moviedata.release_date}</a></small>

@@ -12,11 +12,12 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(RolesTableSeeder::class);
+        $this->call(GenresTableSeeder::class);
         factory(App\User::class, 5)->create();
         factory(App\Company::class, 3)->create();
         factory(App\Movie::class, 5)->create();
         factory(App\Actor::class, 40)->create();
-        $this->call(GenresTableSeeder::class);
+        $this->call(MovieRolesSeeder::class);
 
 
 

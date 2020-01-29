@@ -1,8 +1,9 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Layout from './Hoc/Layout/layout';
 import FirstPage from './Containers/FirstPage/FirstPage';
+import * as actions from './store/actions';
 
 
 const Logout = React.lazy(()=> {
@@ -12,6 +13,10 @@ const Logout = React.lazy(()=> {
 
 
 const App = props => {
+
+  useEffect( ()=>{
+    props.authAttempt();
+  }, []);
 
   let routes = (
     <Switch>
@@ -44,5 +49,10 @@ const mapStateToProps = state => {
       isAuthenticated: state.token !== null
   }
 }
+const mapDispatchToProps = dispatch => {
+  return{
+    authAttempt : () => dispatch(actions.authAttempt())
+  }
+}
 
-export default connect(mapStateToProps, null)(withRouter(App));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(App));

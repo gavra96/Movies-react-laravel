@@ -12,6 +12,6 @@ trait MovieTrait {
 
     public function getTopViewedMovies($limit = 3)
     {
-        return Movie::with(['user'])->orderBy('views', 'DESC')->take($limit)->get();
+        return Movie::with(['user', 'genres'])->orderBy('views', 'DESC')->take($limit)->get();
     }
 }

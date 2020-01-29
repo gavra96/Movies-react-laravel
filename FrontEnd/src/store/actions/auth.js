@@ -1,12 +1,7 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios'; 
-// TO DO setup default axios instance 
-// header setup for axios if user is loged in 
-//{
-  //  headers: {
-    //  Authorization: 'Bearer ' + myToken
-    //}
- // }
+import moment from 'moment';
+
 
 export const authStart = () => {
     return {
@@ -57,7 +52,29 @@ export const attemptLogout = () => {
     }
 }
 
-// TO DO auto loging  
+// auto login if reload page
+export const authAttempt = () => {
+    return dispatch => {
+        const expireIn = localStorage.getItem('expireIn');
+        const token = localStorage.getItem('token');
+
+        if(token && expireIn){
+            
+            const currentTime = moment().format();
+            let splitexpireIn = expireIn.split(".");
+            let splitcurrentTime = currentTime.split("+");
+
+            if(splitcurrentTime[0] < splitexpireIn[0]){
+                dispatch(authSuccess(token, expireIn));// fix needed get user data
+                
+            }else{
+                dispatch(logout());
+            }
+        }
+    }
+
+}
+
 
 export const auth = (email, password) => {
     return dispatch => {

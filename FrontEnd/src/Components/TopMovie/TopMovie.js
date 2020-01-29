@@ -5,6 +5,10 @@ import MovieShow from '../../Containers/MovieShow/MovieShow';
 const TopMovie = props => {
     const [modal, setModal] = useState(false);
 
+    const genres = props.movie.genres.map(genre => {
+        return <span className="bg-aqua" key={genre.id}>{genre.name}</span> 
+    });
+
     return(
             <div className="left-side">
                 <div className="masonry-box post-media" onClick={()=> {setModal(true)}}>
@@ -12,7 +16,7 @@ const TopMovie = props => {
                      <div className="shadoweffect">
                         <div className="shadow-desc">
                             <div className="blog-meta">
-                                <span className="bg-aqua"><a href="blog-category-01.html" >Gardening</a></span>
+                                {genres}
                                 <h4><a href="#">{props.movie.movie}</a></h4>
                                 <small><a href="#" >{props.movie.release_date}</a></small>
                                 <small><a  href="#">by {props.movie.user.name}</a></small>
