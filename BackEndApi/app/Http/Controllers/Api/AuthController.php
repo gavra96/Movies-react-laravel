@@ -35,7 +35,7 @@ class AuthController extends Controller
             ], 401);
         }
         $accesToken = auth()->user()->createToken('authToken')->accessToken;
-        return response(['user'=> auth()->user(),
+        return response(['user'=> auth()->user()->load('role'),
             'access_token'=>$accesToken ,
             'expireIn' => now()->addDays(2)]);
     }
@@ -43,5 +43,10 @@ class AuthController extends Controller
     public function logoutApi(Request $request){ 
         $value = $request->bearerToken();
         $request->user()->token()->revoke();
+    }
+
+    public function getUserByToken()
+    {
+        return auth()->user()->load('role');
     }
 }

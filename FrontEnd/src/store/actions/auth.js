@@ -52,6 +52,7 @@ export const attemptLogout = () => {
     }
 }
 
+
 // auto login if reload page
 export const authAttempt = () => {
     return dispatch => {
@@ -65,8 +66,16 @@ export const authAttempt = () => {
             let splitcurrentTime = currentTime.split("+");
 
             if(splitcurrentTime[0] < splitexpireIn[0]){
-                dispatch(authSuccess(token, expireIn));// fix needed get user data
-                
+                axios.post('http://localhost:8888/api/getUserByToken', null, {
+                    Accept : 'application/json',
+                    headers: {
+                    Authorization: 'Bearer ' + token
+                    }
+                }).then(response => {
+                    dispatch(authSuccess(token, response.data));
+                }).catch(error => {
+                    console.log(error);
+                });
             }else{
                 dispatch(logout());
             }

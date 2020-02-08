@@ -8,10 +8,10 @@ const Movies = props => {
     const [modal, setModal] = useState(false);
 
 
+
     const genres = props.moviedata.genres.map(genre => {
         return <span className="bg-aqua" key={genre.id}>{genre.name}</span> 
     });
-
 
     return(
     <div className="page-wrapper" > 
@@ -37,10 +37,11 @@ const Movies = props => {
         </div>
 
         <hr className="invis"/>
+        
         <Modal open={modal} close={() => setModal(false)} title="" >
               <MovieShow movieId={props.moviedata.id} />
         </Modal>
-        
+    
         </div>
     </div>
     );

@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 Route::post('/register', 'Api\AuthController@register');
 Route::post('/login', 'Api\AuthController@login');
 Route::post('/logout','Api\AuthController@logoutApi')->middleware('auth:api');
+Route::post('/getUserByToken','Api\AuthController@getUserByToken')->middleware('auth:api');
+
 
 Route::apiResource('movies', 'Api\MovieController');
 Route::get('/movie/search/{name}', 'Api\MovieController@movieSearch');

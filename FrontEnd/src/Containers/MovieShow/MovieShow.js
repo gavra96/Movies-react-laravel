@@ -19,6 +19,15 @@ const MovieShow = props => {
 
     //console.log(movie);
 
+    const renderActors = movie.actors && movie.actors.map(actor => {
+        return <li class="list-group-item">{actor.name}</li>
+    })
+
+    const renderGenres = movie.genres && movie.genres.map(genre => {
+        return <li class="list-group-item">{genre.name}</li>
+    }) 
+    
+
     return(
       <div>
           {
@@ -76,8 +85,22 @@ const MovieShow = props => {
                                         
                                         <tr>
                                             <td>
-                                                <strong>Map actors and genres</strong> 
+                                                <strong>Actors</strong>
+                                                <ul class="list-group">
+                                                    {renderActors}
+                                                </ul>
+                                            </td><br/>
+                                            
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Genres</strong>
+                                                <ul class="list-group">
+                                                    {renderGenres}
+                                                </ul>
                                             </td>
+                                            
                                         </tr>
                                     </tbody>
                                 </table>
